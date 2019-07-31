@@ -38,7 +38,7 @@ for titleItem in titleHref:
     htmlStr = getContent(basisUrl+titleHref[titleIndex],xpimg,1)
     imgs = re.search('{status:200,comicInfo:(.*?),nextComicInfo:',htmlStr) 
     imgsObj = re.findall('url:"(.*?)"',imgs.group(1))
-    file = flagCatalog + '\\' + str(titleIndex)
+    file = flagCatalog + '/' + str(titleIndex)
     mkdir(file)
     print(str(titleIndex+1)+'话\n')
     for item in imgsObj:
@@ -46,7 +46,7 @@ for titleItem in titleHref:
         src = item.replace('\\u002F','/')
         res = requests.get(src)
         image = Image.open(BytesIO(res.content))
-        image.save(file + '\\' + str(index) +'.jpg')
+        image.save(file + '/' + str(index) +'.jpg')
         
 # pic = open("D:/9.jpg", "rb")
 # pic_base64 = base64.b64encode(pic.read())
